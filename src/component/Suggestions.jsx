@@ -12,6 +12,7 @@ import { View ,Text, StyleSheet } from "react-native";
       fontSize: 25,
       marginTop: 10,
       paddingLeft:20,
+      textAlign:'center'
     },
   });
   export default Suggestions;

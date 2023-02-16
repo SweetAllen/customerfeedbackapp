@@ -3,10 +3,12 @@ import { View, TouchableHighlight,Text, StyleSheet,TouchableOpacity, TextInput, 
   TouchableWithoutFeedback,Platform,Keyboard,SafeAreaView,StatusBar
 } from "react-native";
 import { Button } from "react-native-elements";
-import Suggestions from "../component/Suggestions";
-import Questions from "../data/Questions.json"
+import Suggestions from "../../component/Suggestions";
+import Questions from "../../data/Questions.json"
+// import Suggestions from "../component/Suggestions";
+// import Questions from "../data/Questions.json"
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-function Goodsuggestions () {
+function Goodfeedback () {
   const [ isPress, setIsPress ] = useState(false);
    const [backgroundColor, setbackgroundColor] =useState('black')
    const [backgroundColor1, setbackgroundColor1] =useState('red')
@@ -15,7 +17,7 @@ function Goodsuggestions () {
    const [keywordsList,setkeywordsList] =useState([]);
    const { container, selectedKeywordStyle, buttonStyle, textStyle } = styles;
 
-   const data = Questions.questions;
+   const data = Questions.countergoodfeedbacl;
 
    const toggleKeyword = (keyword) => {
     console.log(keyword)
@@ -32,14 +34,11 @@ function Goodsuggestions () {
 
     return (
 <View>
-       <Suggestions text="Royal Express ၏ဝန်ဆောင်မှုကိုနှစ်ခြိုက်စွာအသုံးပြုရခြင်း
-၏အဓိကအကြောင်းအရင်းမှာ"/>
-
+       <Suggestions text="သက်ဆိုင်ရာကောင်တာ၏ စိတ်ကျေနပ်စေမှုသည်"/>
 {/* <ScrollView
 pagingEnabled
 showsHorizontalScrollIndicator={false}
 > */}
-     
      <KeyboardAwareScrollView >
 
      <View style={{padding:22}}>
@@ -217,4 +216,4 @@ const styles = StyleSheet.create({
   //   width: 100,
   // }
 });
-export default Goodsuggestions;
+export default Goodfeedback;
