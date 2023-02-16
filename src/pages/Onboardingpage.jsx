@@ -17,14 +17,14 @@ function Onboardingpage({ navigation }) {
 
 <Image
   source={Onboardingimg}
-  style={{width: 400, height: 400}}
+  style={{width: 400, height: 400, alignSelf:'center'}}
 />
-        <Text style={styles.introtext}>ပိုမိုကောင်းမွန်သောဝန်ဆောင်မှုများကေးနိုင်ရန်သင့်၏အကြံပြုချက်ကိုမျှဝေပေးပါ</Text>
+        <Text style={styles.introtext}>ပိုမိုကောင်းမွန်သောဝန်ဆောင်မှုမျာပေးနိုင်ရန်သင့်၏အကြံပြုချက်ကိုမျှဝေပေးပါ</Text>
 
 
-        <Continuebtn  onPress={() => navigation.push('RErating')}
-                        />
+    
       </View>
+      <Continuebtn  onPress={() => navigation.push('RErating')}  />
       </View>
     );
   };
@@ -38,9 +38,10 @@ function Onboardingpage({ navigation }) {
     container: {
       flex: 1,
       justifyContent: 'center',
+      marginTop:-50
     },
     introtext: {
-      fontSize: 20,
+      fontSize: 30,
       fontWeight:'bold',
       textAlign: 'center',
       marginTop: -60,

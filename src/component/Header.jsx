@@ -5,7 +5,7 @@ const Header = () =>{
     return(
 <Image
   source={logo}
-  style={{width: 250, height: 40,marginTop:60, marginLeft:-100}}
+  style={{width: 250, height: 40,marginTop:60, marginLeft:-350}}
 />
     )
 }

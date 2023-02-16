@@ -12,12 +12,11 @@ function Continuebtn({title,onPress}) {
         <Button
         title="ဆက်သွားရန်"
         onPress={onPress}
-        // onPress={() => navigation.push('MainRating')}
         buttonStyle={{
           backgroundColor: '#F41111',
           borderWidth: 2,
           borderColor: 'white',
-          borderRadius: 30,
+          borderRadius: 25,
         }}
         containerStyle={{
           width: 180,
@@ -38,7 +37,9 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       width: '100%',
       marginVertical: 20,
-      marginTop:40,
+      marginTop:-20,
+      backgroundColor:'white',
+      height:'20%',
     },
 
   });
