@@ -12,11 +12,13 @@ import Phone from './src/pages/Survey/Phone';
 import Thankyou from './src/pages/Thankyou';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
+import { UserAuthContextProvider } from './src/context/StorageContex';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
+    <UserAuthContextProvider>
+
     <NavigationContainer>
       <Stack.Navigator  initialRouteName="Onboardingpage">
         <Stack.Screen name="Onboardingpage" component={Onboardingpage}   options={{headerShown: false}}/>
@@ -32,6 +34,8 @@ export default function App() {
 
       </Stack.Navigator>
     </NavigationContainer>
+    </UserAuthContextProvider>
+
   );
 }
 

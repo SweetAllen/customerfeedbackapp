@@ -6,7 +6,7 @@ import { Button } from "react-native-elements";
 import Suggestions from "../component/Suggestions";
 import Questions from "../data/Questions.json"
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-function Goodsuggestions () {
+function Goodsuggestions (props) {
   const [ isPress, setIsPress ] = useState(false);
    const [backgroundColor, setbackgroundColor] =useState('black')
    const [backgroundColor1, setbackgroundColor1] =useState('red')
@@ -14,59 +14,60 @@ function Goodsuggestions () {
    const [status, setstatus] =useState(false)
    const [keywordsList,setkeywordsList] =useState([]);
    const { container, selectedKeywordStyle, buttonStyle, textStyle } = styles;
-
+   const {name} =props
    const data = Questions.questions;
 
-   const toggleKeyword = (keyword) => {
-    console.log(keyword)
-    // setkeywordsList([...keywordsList])
-    let list = keywordsList;
-    let index = -1;
-    if ((index = keywordsList.indexOf(keyword)) != -1) {
-      list.splice(index, 1);
-    } else {
-      list.push(keyword);
-    }
-    setkeywordsList([...keywordsList,list])
-  };
+  //  const toggleKeyword = (keyword) => {
+  //   console.log(keyword)
+  //   // setkeywordsList([...keywordsList])
+  //   let list = keywordsList;
+  //   let index = -1;
+  //   if ((index = keywordsList.indexOf(keyword)) != -1) {
+  //     list.splice(index, 1);
+  //   } else {
+  //     list.push(keyword);
+  //   }
+  //   setkeywordsList([...keywordsList,list])
+  // };
 
     return (
 <View>
-       <Suggestions text="Royal Express ၏ဝန်ဆောင်မှုကိုနှစ်ခြိုက်စွာအသုံးပြုရခြင်း
-၏အဓိကအကြောင်းအရင်းမှာ"/>
+       {/* <Suggestions text="Royal Express ၏ဝန်ဆောင်မှုကိုနှစ်ခြိုက်စွာအသုံးပြုရခြင်း
+၏အဓိကအကြောင်းအရင်းမှာ"/> */}
 
 {/* <ScrollView
 pagingEnabled
 showsHorizontalScrollIndicator={false}
 > */}
      
-     <KeyboardAwareScrollView >
+     {/* <KeyboardAwareScrollView > */}
 
      <View style={{padding:22}}>
 
-    <View style={styles.container1}>
+    {/* <View style={styles.container1}> */}
 
-    {data.map((item,index) =>
-(
+    {/* {data.map((item,index) =>
+( */}
 
 
     <TouchableOpacity
-            style={keywordsList.find((element) => element == item) ? selectedKeywordStyle : buttonStyle}
-            onPress={() => toggleKeyword(item)}
-            key={item.id}
+    style={buttonStyle}
+            // style={keywordsList.find((element) => element == item) ? selectedKeywordStyle : buttonStyle}
+            // onPress={() => toggleKeyword(item)}
+            // key={item.id}
           >
-            <Text style={textStyle}>{item.name}</Text>
+            <Text style={textStyle}>{name}</Text>
           </TouchableOpacity>
 
-))}
+{/* ))} */}
 
 
-</View>
-
+{/* </View> */}
+{/* 
       <TextInput
       placeholder="အခြား" 
         style={styles.input}
-      />
+      /> */}
 {/* 
 <View style={styles.btnContainer}>
 <Button
@@ -89,7 +90,7 @@ showsHorizontalScrollIndicator={false}
 </View> */}
       </View>
 
-      </KeyboardAwareScrollView>
+      {/* </KeyboardAwareScrollView> */}
 {/* <ScrollView> */}
 
 

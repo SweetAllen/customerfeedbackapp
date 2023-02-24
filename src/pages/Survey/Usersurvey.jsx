@@ -1,11 +1,12 @@
-import React from "react";
+import React,{useState} from "react";
 import {AppRegistry, StyleSheet, Text, View, Image} from 'react-native';
 import { Button } from "react-native-elements";
 import Continuebtn from "../../component/Continuebtn";
 import survey from '../../assets/images/survey.png'
 import Header from "../../component/Header";
 import RadioButtonRN from "radio-buttons-react-native";
-function Usersurvey({ navigation }) {
+function Usersurvey({ navigation, route }) {
+const [surveyData, setSurveydata] = useState("");
     const data = [
         {
           label: 'ပထမဦးဆုံး အကြိမ်အသုံးပြုခြင်းဖြစ်သည်'
@@ -17,7 +18,21 @@ function Usersurvey({ navigation }) {
             label: 'အမြဲတမ်းအသုံးပြုပါသည်'
            }
         ];
- 
+        React.useEffect(() => {
+          console.log( route.params)
+         }, []);
+
+         const onSubmit=  (e) =>{
+          e.preventDefault();
+    
+          navigation.navigate('Phone', {
+              "reratingcount": route.params.reratingcount,
+              "reratingdata": route.params.reratingdata,
+            "counterratingcount": route.params.counterratingcount,
+            "counterratingdata": route.params.counterratingdata,
+            "surveydata":surveyData
+          });
+      }
     return (
         <View style={styles.main}>
          <View style={{marginTop:'-5%'}}>
@@ -31,7 +46,7 @@ function Usersurvey({ navigation }) {
       textStyle={{fontSize:20}}
       boxStyle={{width:'140%'}}
   data={data}
-  selectedBtn={(e) => console.log(e)}
+  selectedBtn={(e) => setSurveydata(e.label)}
 />
       </View>
       <View style={styles.container}>
@@ -61,7 +76,10 @@ function Usersurvey({ navigation }) {
         }}
         titleStyle={{ fontWeight: 'bold' }}
       /> */}
-      <Continuebtn  onPress={() => navigation.push('Phone')}  />
+      <Continuebtn 
+         onPress={onSubmit}
+      // onPress={() => navigation.push('Phone')}
+       />
       </View>
     );
   };

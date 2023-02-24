@@ -7,12 +7,18 @@ import Header from "../../component/Header";
 import RadioButtonRN from "radio-buttons-react-native";
 import PhoneInput from "react-native-phone-number-input";
 import logo from '../../assets/images/logo.png'
-function Phone({ navigation }) {
+function Phone({ navigation, route }) {
     
     const [value, setValue] = useState("");
     const [formattedValue, setFormattedValue] = useState("");
     const [valid, setValid] = useState(false);
     const phoneInput = useRef(null);
+
+
+    React.useEffect(() => {
+      console.log( route.params)
+     }, []);
+
 
     return (
          
