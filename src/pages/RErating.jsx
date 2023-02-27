@@ -9,7 +9,6 @@ import logo from '../assets/images/logo.png'
 import Questions from "../data/Questions.json"
 import Suggestions from "../component/Suggestions";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import { useAuth } from "../context/StorageContex";
 
 
 function RErating({ navigation }) {
@@ -19,7 +18,6 @@ function RErating({ navigation }) {
 
     const [keywordsList,setkeywordsList] =useState([]);
     const [reResult,setReresult]=useState([]);
-    const {addtodb} =useAuth();
     const { container, selectedKeywordStyle, buttonStyle, textStyle } = styles;
     const ratingCompleted=(rating)=> {
         console.log("Rating is: " + rating)
@@ -37,19 +35,10 @@ function RErating({ navigation }) {
       list.push(keyword);
     }
     setkeywordsList([...keywordsList])
-    // setReresult([list])
-  // setReresult({"ratingcount":ratingcount,"ratingdata":[...keywordsList,list]})
   };
 
 
-    //  const onSubmit= async (e) =>{
-    //   e.preventDefault();
-    //   // let pp = keywordsList.filter( (ele, ind) => ind === keywordsList.findIndex( elem => elem.name === ele.name && elem.id === ele.id))
-    //   setReresult({"rating":ratingcount,"ratingdata":keywordsList})
-    //   await addtodb(ratingcount,keywordsList)
-
-        
-    //  }
+    
 
     const onSubmit=  (e) =>{
       e.preventDefault();
@@ -58,9 +47,7 @@ function RErating({ navigation }) {
         "reratingcount": ratingcount,
         "reratingdata": keywordsList,
       });
-      // let pp = keywordsList.filter( (ele, ind) => ind === keywordsList.findIndex( elem => elem.name === ele.name && elem.id === ele.id))
-      // setReresult({"rating":ratingcount,"ratingdata":keywordsList})
-      // await addtodb(ratingcount,keywordsList)
+      
 
         
      }

@@ -31,15 +31,13 @@ function Continuebtn({title,onPress}) {
 const styles = StyleSheet.create({
   
     buttonsContainer: {
-      flexDirection: 'row',
-      flexWrap: 'wrap',
-      justifyContent: 'center',
+      width: '100%', 
+      height: '10%', 
+      backgroundColor: 'white', 
+      justifyContent: 'center', 
       alignItems: 'center',
-      width: '100%',
-      marginVertical: 20,
-      marginTop:-20,
-      backgroundColor:'white',
-      height:'20%',
+      position: 'absolute',
+      bottom: 0
     },
 
   });
