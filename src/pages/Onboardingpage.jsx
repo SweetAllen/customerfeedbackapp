@@ -1,11 +1,32 @@
-import React from "react";
+import React,{useEffect} from "react";
 import {AppRegistry, StyleSheet, Text, View, Image} from 'react-native';
 import Continuebtn from "../component/Continuebtn";
 import Onboardingimg from '../assets/images/onboarding.png'
 import Header from "../component/Header";
+import { useAuth } from "../context/StorageContex";
+// import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+// import DeviceInfo from "react-native-device-info";
 
 function Onboardingpage({ navigation }) {
+  const { logIn } = useAuth();
 
+  useEffect(()=>{
+    loginemailpassword()
+  },[])
+
+  // function getdeviceID(){
+
+  // }
+const loginemailpassword = async ()=>{
+  await logIn("test@gmail.com","123456");
+
+// const loginemail="text@gmail.com"
+// const loginpassword="123456"
+// const auth = getAuth();
+
+// const usercredential=await signInWithEmailAndPassword(auth,"test@gmail.com","123456")
+// console.log("usercredential",usercredential)
+}
  
     return (
         <View style={styles.main}>
@@ -51,3 +72,5 @@ function Onboardingpage({ navigation }) {
 
 
 export default Onboardingpage;
+
+

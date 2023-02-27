@@ -126,7 +126,9 @@ height: 70,
 margin: 12,
 borderWidth: 1,
 padding: 10,
+marginBottom:40,
 marginBottom:40
+
 },
 container: {
 flexDirection: "row",

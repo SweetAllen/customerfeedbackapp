@@ -11,8 +11,8 @@ import { View ,Text, StyleSheet } from "react-native";
     textstyle: {
       fontSize: 25,
       marginTop: 10,
-      paddingLeft:20,
-      textAlign:'center'
+       paddingLeft:20,
+      // textAlign:'center'
     },
   });
   export default Suggestions;
