@@ -30,7 +30,9 @@ const [surveyData, setSurveydata] = useState("");
               "reratingdata": route.params.reratingdata,
             "counterratingcount": route.params.counterratingcount,
             "counterratingdata": route.params.counterratingdata,
-            "surveydata":surveyData
+            "surveydata":surveyData,
+            "loginbranch": route.params.loginbranch,
+
           });
       }
     return (

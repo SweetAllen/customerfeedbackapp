@@ -18,14 +18,16 @@ export function UserAuthContextProvider({ children }) {
     return signInWithEmailAndPassword(auth, email, password);
   }
   
-  function addtodb(count, data,count1,data1,surveydtata,ph) {
-    return  setDoc(doc(db, "rating", "ratingdata"), {
+  function addtodb(number,count, data,count1,data1,surveydtata,ph,branch) {
+    return   addDoc(collection(db, "rating"), {
+      id:number,
       reratingcount: count,
       reratingdata: data,
       counterratingcount: count1,
       counterratingdata: data1,
       usersurvey:surveydtata,
-      phone:ph
+      phone:ph,
+      loginbranch:branch
 
     
     });

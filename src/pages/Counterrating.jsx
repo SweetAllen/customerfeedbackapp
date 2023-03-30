@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
 import {AppRegistry, StyleSheet, Text, View, Image, Animated,TouchableOpacity, TextInput, ScrollView} from 'react-native';
 import Mainquestions from "../component/Mainquestions";
 import { Rating, AirbnbRating } from 'react-native-elements';
@@ -17,11 +17,15 @@ function Counterrating({ navigation, route}) {
     const [keywordsList,setkeywordsList] =useState([]);
     const good = Questions.countergoodfeedbacl;
     const bad = Questions.counterbadfeedback;
-
-    React.useEffect(() => {
-       console.log( route.params)
-      }, []);
-    
+    // const branch= route.params.loginbranch
+   
+    const [branch,setBranch] =useState()
+    useEffect(() => {
+       const bran=route.params.loginbranch.replace('@gmail.com','')
+       const lable= bran.concat(' ','', 'ကောင်တာ၏ ဝန်ဆောင်မှုအပေါ် မည်သို့ထင်မြင်ယူဆချက်ရှိပါသလဲ')
+       
+        setBranch(lable)
+    }, []);
     const ratingCompleted=(rating)=> {
         console.log("Rating is: " + rating)
            setratingcount(rating)
@@ -42,12 +46,15 @@ function Counterrating({ navigation, route}) {
        
     const onSubmit=  (e) =>{
         e.preventDefault();
-  
+        // console.log(route.params.loginbranch)
+
         navigation.navigate('Usersurvey', {
             "reratingcount": route.params.reratingcount,
             "reratingdata": route.params.reratingdata,
           "counterratingcount": ratingcount,
           "counterratingdata": keywordsList,
+          "loginbranch": route.params.loginbranch,
+
         });
     }
       const reactionicons = ratingcount === 5 ? <View><Image source={require("../assets/images/verygood.png")} style={styles.img} />
@@ -74,8 +81,8 @@ function Counterrating({ navigation, route}) {
 <Suggestions text="သက်ဆိုင်ရာကောင်တာ၏ စိတ်ကျေနပ်စေမှုသည်"/>
      <KeyboardAwareScrollView>
 
-<View style={{padding:22}}>
-    <View style={styles.container1}>
+     <View style={{padding:22}}>
+       <View style={styles.container1}>
 
 { good.map((item,index) =>
 (
@@ -127,8 +134,8 @@ function Counterrating({ navigation, route}) {
  
 
     return (
-                 <View style={{backgroundColor:'white'}}>
-        <Mainquestions mainquestion= "မြောက်ဥက္ကလာကောင်တာ၏ ဝန်ဆောင်မှုအပေါ် မည်သို့ထင်မြင်ယူဆချက်ရှိပါသလဲ" />
+                 <ScrollView style={{backgroundColor:'white',flex:1}}>
+        <Mainquestions mainquestion={branch}/>
        
         <View style={{alignItems:'center'}}>
          {reactionicons}
@@ -136,6 +143,8 @@ function Counterrating({ navigation, route}) {
          </View>
          <Rating
         type="custom"
+
+        
   ratingColor='#F41111'
   ratingBackgroundColor='#ffff'
   ratingCount={5}
@@ -158,9 +167,28 @@ function Counterrating({ navigation, route}) {
   defaultRating={5}
   size={30}
 />   */}
-<Continuebtn   onPress={onSubmit}/>
 
-   </View>
+ <Continuebtn 
+ onPress={onSubmit}  
+
+ />
+      {/* <Button
+        title="တင်သွင်းရန်"
+        // onPress={handleSubmit} 
+        buttonStyle={{
+          backgroundColor: '#F41111',
+          borderWidth: 2,
+          borderColor: 'white',
+          borderRadius: 25,
+        }}
+        containerStyle={{
+          width: 180,
+          marginHorizontal: 10,
+          marginVertical: 10,
+        }}
+        titleStyle={{ fontWeight: 'bold' }}
+      /> */}
+   </ScrollView>
     )
 }
 const styles=StyleSheet.create({
@@ -174,12 +202,12 @@ const styles=StyleSheet.create({
     fontWeight:'900'
  },
  container1: {
-    flexDirection:'row',
-      flexWrap:'wrap',
-      flex:1,
-      justifyContent:'space-between',
-  
-    },
+  flexDirection:'row',
+    flexWrap:'wrap',
+    flex:1,
+    justifyContent:'space-between',
+
+  },
     buttonStyle: {
       // width: "30%",
       backgroundColor: "gray",

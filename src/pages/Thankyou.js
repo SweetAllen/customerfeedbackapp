@@ -1,13 +1,32 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {AppRegistry, StyleSheet, Text, View, Image} from 'react-native';
 import Continuebtn from "../component/Continuebtn";
 import Onboardingimg from '../assets/images/onboarding.png'
 import Header from "../component/Header";
 import thanku from '../assets/images/thanku.png'
 import logo from '../assets/images/logo.png'
-function Thankyou({ navigation }) {
+import { CommonActions } from "@react-navigation/native";
+function Thankyou({ navigation, route }) {
 
  
+  useEffect (()=>{
+    setTimeout(()=>{
+      // Add your logic for the transition
+      navigation.navigate('Onboardingpage',{ "loginbranch": route.params.loginbranch }) // what to push here?
+  }, 5000);
+  // navigation.dispatch(
+  //   CommonActions.reset({
+  //     index: 1,
+  //     routes: [
+  //       { name: 'Onboardingpage' ,
+  //       params: { loginbranch: route.params.loginbranch }
+  //     },
+       
+  //     ],
+  //   })
+  // );
+ },[])
+
     return (
         <View>
                 <Image

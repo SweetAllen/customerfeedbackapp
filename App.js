@@ -13,6 +13,7 @@ import Thankyou from './src/pages/Thankyou';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { UserAuthContextProvider } from './src/context/StorageContex';
+import Login from './src/pages/Login';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -20,17 +21,19 @@ export default function App() {
     <UserAuthContextProvider>
 
     <NavigationContainer>
-      <Stack.Navigator  initialRouteName="Onboardingpage">
+      <Stack.Navigator  initialRouteName="Login">
+      <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
+
         <Stack.Screen name="Onboardingpage" component={Onboardingpage}   options={{headerShown: false}}/>
-        <Stack.Screen name="RErating" component={RErating} />
-        <Stack.Screen name="Counterrating" component={Counterrating} />
+        <Stack.Screen name="RErating" component={RErating} options={{title: ""}}/>
+        <Stack.Screen name="Counterrating" component={Counterrating} options={{title: ""}}/>
         {/* <Stack.Screen name="Goodsuggestions" component={Goodsuggestions} /> */}
-        <Stack.Screen name="Badsuggestions" component={Badsuggestions} />
-        <Stack.Screen name="Goodfeedback" component={Goodfeedback} />
-        <Stack.Screen name="Badfeedback" component={Badfeedback} />
-        <Stack.Screen name="Usersurvey" component={Usersurvey} />
-        <Stack.Screen name="Phone" component={Phone} />
-        <Stack.Screen name="Thankyou" component={Thankyou} />
+        <Stack.Screen name="Badsuggestions" component={Badsuggestions} options={{title: ""}}/>
+        <Stack.Screen name="Goodfeedback" component={Goodfeedback} options={{title: ""}}/>
+        <Stack.Screen name="Badfeedback" component={Badfeedback} options={{title: ""}}/>
+        <Stack.Screen name="Usersurvey" component={Usersurvey} options={{title: ""}}/>
+        <Stack.Screen name="Phone" component={Phone} options={{title: ""}}/>
+        <Stack.Screen name="Thankyou" component={Thankyou} options={{title: "",headerShown: false}}/>
 
       </Stack.Navigator>
     </NavigationContainer>

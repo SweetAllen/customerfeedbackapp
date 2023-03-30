@@ -8,6 +8,9 @@ import RadioButtonRN from "radio-buttons-react-native";
 import PhoneInput from "react-native-phone-number-input";
 import logo from '../../assets/images/logo.png'
 import { useAuth } from "../../context/StorageContex";
+import { uuidv4 } from "@firebase/util";
+import {collection, addDoc, Timestamp, setDoc,doc,getDocs} from 'firebase/firestore'
+import { db } from "../../firebase/config";
 function Phone({ navigation, route }) {
     
     const [value, setValue] = useState("");
@@ -15,6 +18,7 @@ function Phone({ navigation, route }) {
     const [valid, setValid] = useState(false);
     const phoneInput = useRef(null);
     const {addtodb} =useAuth();
+    const [error, setError] = React.useState("");
 
     // "reratingcount": route.params.reratingcount,
     //           "reratingdata": route.params.reratingdata,
@@ -22,18 +26,50 @@ function Phone({ navigation, route }) {
     //         "counterratingdata": route.params.counterratingdata,
     //         "surveydata":surveyData
     React.useEffect(() => {
-      console.log( route.params)
+      const id=uuidv4()
+      console.log("id" + id)
      }, []);
 
      const handleSubmit = async (e) => {
       e.preventDefault();
       // setError("");
+
       try {
-        await addtodb(route.params.reratingcount,route.params.reratingdata,route.params.counterratingcount, route.params.counterratingdata, route.params.surveydata,formattedValue)
-        navigation.navigate('Thankyou');
-  
+        // await addtodb(uuidv4(),
+        // route.params.reratingcount,
+        // route.params.reratingdata,
+        // route.params.counterratingcount,
+        //  route.params.counterratingdata, 
+        // route.params.surveydata,
+        // formattedValue,
+        // route.params.loginbranch)
+
+        await addDoc(collection(db, "rating"), {
+          "reratingcount":route.params.reratingcount,
+          "reratingdata": route.params.reratingdata,
+          "counterratingcount": route.params.counterratingcount,
+          "counterratingdata": route.params.counterratingdata,
+          "surveydata": route.params.surveydata,
+          "cusph": formattedValue,
+          "loginbranch": route.params.loginbranch,
+
+
+
+
+        });
+        navigation.navigate('Thankyou',{
+          "reratingcount": route.params.reratingcount,
+          "reratingdata": route.params.reratingdata,
+        "counterratingcount": route.params.counterratingcount,
+        "counterratingdata": route.params.counterratingdata,
+        "surveydata":route.params.surveyData,
+        "loginbranch": route.params.loginbranch,
+        "phone": formattedValue
+ })
+ 
       } catch (err) {
         setError(err.message);
+        console.log(err.message)
       }
     };
     return (
