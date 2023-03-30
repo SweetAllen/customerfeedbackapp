@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import Onboardingpage from './src/pages/Onboardingpage';
 import RErating from './src/pages/RErating';
 import Counterrating from './src/pages/Counterrating';
-import Goodsuggestions from './src/pages/Goodsuggestions';
+// import Goodsuggestions from './src/pages/Goodsuggestions';
 import Badsuggestions from './src/pages/Badsuggestions';
 import Goodfeedback from './src/pages/Counterfeedback/Goodfeedback';
 import Badfeedback from './src/pages/Counterfeedback/Badfeedback';
@@ -24,7 +24,7 @@ export default function App() {
         <Stack.Screen name="Onboardingpage" component={Onboardingpage}   options={{headerShown: false}}/>
         <Stack.Screen name="RErating" component={RErating} />
         <Stack.Screen name="Counterrating" component={Counterrating} />
-        <Stack.Screen name="Goodsuggestions" component={Goodsuggestions} />
+        {/* <Stack.Screen name="Goodsuggestions" component={Goodsuggestions} /> */}
         <Stack.Screen name="Badsuggestions" component={Badsuggestions} />
         <Stack.Screen name="Goodfeedback" component={Goodfeedback} />
         <Stack.Screen name="Badfeedback" component={Badfeedback} />
